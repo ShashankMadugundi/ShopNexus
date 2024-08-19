@@ -1,0 +1,91 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+
+{%if products %}
+<div>
+<div class="container my-5">
+  <div id="minimum" class="alert alert-primary object-fit-fill d-none" style="width:350px" role="alert">
+   <i> Minimum quantity of a product must be 1 !!!</i>
+  </div>
+    <div class="row my-5">
+     <h3 class="mb-5">Shopping Cart</h3>
+     <div class="col-sm-8  border-0">
+     <div class="card  border-0">
+      <div class="card-body shadow  border-0">
+       {%for product,qty,prod_price in cart_items%}
+       <div class="row ">
+        
+        <div class="col-sm-3 text-center align-self-center"><a href="/productdetail/{{product.id}}"><img src="{{product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"></a> </div>
+        <div class="col-sm-9">
+         <div>
+          <h5><a href="/productdetail/{{product.id}}">{{product.title}}</a></h5>
+          <p class="mb-2 text-muted">{{product.caption}}</p>
+          <div class="my-3">
+           <label for="quantity">Quantity:</label>
+           <a class="minus-cart btn" pid={{product.id}}><i class="fas fa-minus-square fa-lg"></i></a>
+           <span id="quantity" >{{ qty }}</span>
+           <a class="plus-cart btn" pid={{product.id}}><i class="fas fa-plus-square fa-lg"></i></a>
+          </div> 
+          <div class="d-flex justify-content-between">
+           <form action="/delete/{{product.id}}" method="post">
+            {%csrf_token%}
+              <button type="submit" class="btn btn-sm btn-secondary mr-3 shadow py-1 px-2">Remove item</button>
+            </form>
+
+           <p class="mb-0"><span class="fw-semibold">₹<strong>{{prod_price}}</strong></span></p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <hr class="text-muted my-4">
+{%endfor%}
+      </div>
+      </div>
+     </div>
+   
+     <div class="col-sm-4 border-0">
+      <div class="card border-0">
+       <div class="card-body shadow border-0">
+         <h3>Price Details</h3>
+         <ul class="list-group border-0">
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Price<span id="total_price">₹ {{price}}</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Discount<span id="discount_price">-₹ {{discount}}</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0  border-0 px-0 mb-3">Shipping<span>₹ 70.00</span></li>
+         <hr >
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+           <div>
+              <strong>Total</strong> <small>(including VAT)</small>
+            </div>
+            <span><strong id="final_price">₹ {{total|add:70}}</strong></span>
+          </li>
+         </ul>
+         <div class="d-grid"><a href="checkout" class="btn btn-primary">Place Order</a></div>
+         <p id="final-discount" class=" mt-3 justify-content-between text-success fw-bolder align-items-center px-0  border-0 px-0 mb-0">You will save ₹ {{discount}} on this order</p>
+       </div>
+      </div>
+     </div>   
+    </div>
+   </div>
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-8">
+      <div class="card">
+       <div class="card-body">
+         <h5 class="mb-4">We accept</h5>
+         <img src="{%static 'app/images/payment.png' %}" alt="" class="img-fluid">
+       </div>
+     </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  {%else%}
+  <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+    <div class="text-center">
+        <h2><i>No items to display!!!</i></h2>
+        <img class="w-50 img-fluid" src="{% static 'app/images/emptycart.png' %}" alt="Empty Cart">
+    </div>
+</div>
+  {%endif%}
+{% endblock %}

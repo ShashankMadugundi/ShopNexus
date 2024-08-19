@@ -1,0 +1,38 @@
+{%extends "app/base.html"%}
+{%block content%}
+
+<div class="container my-5"> 
+    <div class="row">
+    <h3 class="text-capitalize">Welcome {{user.username}}</h3>
+     <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+       <li class="d-grid"><a href="{% url 'orders' %}" class="btn btn-primary">Orders</a></li>
+      </ul>
+     </div>
+     <div class="col-sm-9 offset-sm-1">
+      {%if orders%}
+      <div class="row">
+        {%for order,price in result %}
+        <div class="card mb-2">
+            <div class="card-body row">
+             <div class="col-sm-9">
+                <p class="text-capitalize">Deliver to: {{order.customer.name}}</p>
+              <h5>{{order.product.title}}</h5>
+              <p>{{order.product.caption}}</p>
+              <p>Quantity: {{order.quantity}}</p>
+              <p class="fw-semibold" style="font-weight:500">Price: ₹{{price}}</p>
+              <p class="fw-semibold" style="font-weight:500">Order Status: {{order.status}}</p>
+             </div>
+              <div class="col-sm-3 text-center align-self-center"><img src="{{order.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+            </div>           
+          </div>
+       {%endfor%}
+      </div>
+       {%else%}
+      <i><h3>"No orders to display"</h3></i>
+      {%endif%} 
+     </div>
+    </div>
+   
+   </div>
+{%endblock%}

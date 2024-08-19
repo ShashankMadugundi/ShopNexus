@@ -1,0 +1,20 @@
+{%extends "app/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+     <div class="col-sm-6 offset-sm-3">
+      <h3 style="text-align:center">Login</h3>
+      <hr>
+      <form action="" method="post" novalidate class="shadow p-5">
+        {% csrf_token %}
+       {{form}}
+       <small><a href="#">Forgot Password ?</a></small> <br>
+       <input type="submit" class="btn btn-primary mt-4" value="Login">
+       <br>
+       <div class="text-center text-primary fw-bold"><small>New to <i>ShopNexus? </i> <a href="{% url 'register' %}"
+          class="text-danger">  Create an Account</a> </small></div>
+      </form>
+     </div>
+    </div>
+   </div>
+{% endblock %}

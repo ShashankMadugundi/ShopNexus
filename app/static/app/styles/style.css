@@ -1,0 +1,106 @@
+/* .owl-carousel .item{ */
+    /* border: 1px solid black; */
+    /* font-size: 24px;
+    text-align: center;
+    margin-top: 20px;;
+   }
+   
+   .owl-next{
+    float:right;
+   }
+   .owl-prev{
+    float:left;
+   }
+   .owl-prev span{
+    font-size: 24px;
+    font-weight: bold;
+   }
+   .owl-next span{
+    font-size: 24px;
+    font-weight: bold;
+   } */
+    body{
+        font-family: "Roboto Slab";
+    }
+    /* .cart{
+        width:15px;
+        height:15px;
+    } */
+    
+    
+    .carousel{
+      margin:5px;
+    }
+   .sale{
+     margin: 5px;
+    }
+    .deals{
+      /* margin: 5px; */
+      padding: 5px;
+    }
+    .item{
+      height: 200px;
+      background-color: aqua;
+    }
+    .subhead{
+      margin-top:20px;
+      margin-left: 5px;
+    }
+    
+    .dropdown-submenu {
+      position: relative;
+    }
+    
+    .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+  
+  @media (min-width: 992px){
+    .dropdown-menu .dropdown-toggle:after{
+      border-top: .3em solid transparent;
+	    border-right: 0;
+	    border-bottom: .3em solid transparent;
+	    border-left: .3em solid;
+    }
+    .dropdown-menu .dropdown-menu{
+      margin-left:0; margin-right: 0;
+    }
+    .dropdown-menu li{
+      position: relative;
+    }
+    .nav-item .submenu{ 
+      display: none;
+      position: absolute;
+      left:100%; top:-7px;
+    }
+    .nav-item .submenu-left{ 
+      right:100%; left:auto;
+    }
+    .dropdown-menu > li:hover{ background-color: #f1f1f1 }
+    .dropdown-menu > li:hover > .submenu{
+      display: block;
+    }
+  }
+  
+  
+  
+  .latest{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    
+  }
+  
+  
+  
+  /* @media (max-width: 576px) {
+    .card-img-top {
+    height: 120px;
+  }
+  } */
+  .card-img-top{
+   width: 100%;
+   height: 250px;
+  }

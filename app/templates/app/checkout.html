@@ -1,0 +1,63 @@
+{%extends "app/base.html"%}
+{%block content%}
+<div class="container">
+    <div class="row mt-5">
+     <div class="col-sm-6">
+       <h4>Order Summary</h4>
+       <hr>
+       {%for item,price in goods%}
+         <div class="card mb-2">
+           <div class="card-body row">
+            <div class="col-sm-9">
+             <h5>{{item.product.title}}</h5>
+             <p>{{item.product.caption}}</p>
+             <p>Quantity: {{item.quantity}}</p>
+             <p class="fw-bold">Price: {{price}}</p>
+            </div>
+             <div class="col-sm-3 text-center align-self-center"><img src="{{item.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+           </div>
+         </div>
+         {%endfor%}
+         <h3 class="my-3">Total Amount : ₹ {{total|add:70}}</h3>
+         
+         <div class="card mb-1">
+          <div class="card-body row">
+           <div class="col-sm-9">
+            <h5>COD</h5>
+            <p>We are sorry for the inconvience as currently we are accepting only Cash On Delivery</p>
+           </div>
+          </div>
+        </div>
+
+
+       <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil in et quis?</small>
+     </div>
+     <div class="col-sm-4 offset-sm-1">
+       <h4>Select Shipping Address</h4>
+       <hr>
+       <form action="/payment" method="GET">
+        {%for cust in userData%}
+         <div class="card">
+           <div class="card-body">
+           <h5>{{cust.name}}</h5>
+           <p class="m-1">{{cust.locality}},</p>
+           <p class="m-1">{{cust.city}},</p>
+           <p class="m-1">{{cust.state}},</p>
+           <p class="m-1">{{cust.zipcode}}</p>
+           </div>
+         </div>
+           <div class="form-check mt-2 mb-5">
+             <input class="form-check-input" name="custid" type="radio" value="{{cust.id}}" checked>
+             <label class="form-check-label fw-bold" for="">
+               Address: {{forloop.counter}} </label>
+           </div>
+{%endfor%}
+            <a href="/profile">Add New Address</a>
+           <div class="text-end">
+             <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+{%endblock%}

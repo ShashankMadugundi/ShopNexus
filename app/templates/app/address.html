@@ -1,0 +1,31 @@
+{%extends "app/base.html"%}
+{%block content%}
+<div class="container my-5">
+    <div class="row">
+    <h3>Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+     <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+       <li class="d-grid"><a href="{% url 'profile' %}" class="btn">Profile</a></li>
+       <li class="d-grid"><a href="{% url 'address' %}" class="btn btn-primary">Address</a></li>
+      </ul>
+     </div>
+     <div class="col-sm-9 offset-sm-1">
+      <div class="row">
+            {%for data in fields %}
+       <div class="col-sm-6">
+        <div class="card">
+         <div class="card-body">
+          <h3>Address {{forloop.counter}}</h3>
+          <p>Name: {{data.name}}</p>
+          <p>Address 1: {{data.locality}}</p>
+          <p>Address 2: {{data.city}}</p>
+          <p>State: {{data.state}}</p>
+         </div>
+        </div>
+       </div>
+       {%endfor%}
+      </div>
+     </div>
+    </div>
+   </div>
+{%endblock%}
