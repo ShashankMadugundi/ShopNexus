@@ -15,6 +15,8 @@ Database: Django’s built-in database
 ![image](https://github.com/user-attachments/assets/3343e7b9-bd97-499d-abb8-c9752a9d4ec8)
 **Men's Bottom Wear Section**
 ![image](https://github.com/user-attachments/assets/54d47919-7ec3-44e7-b190-cf20cf2a3af8)
+**Product Detail**
+![image](https://github.com/user-attachments/assets/1e744bae-e29d-458b-a357-b63bea09472d)
 **Cart**
 ![image](https://github.com/user-attachments/assets/385cb61c-fdbc-412a-86f2-14a17732a600)
 **Order Confirmation**
